@@ -17,11 +17,11 @@ A high-performance, modular meta-crate and utility toolkit for modern Rust devel
 
 ## Workspace Crates & Modules
 
-| Module / Crate | Feature | Description | Dependencies |
-| :--- | :--- | :--- | :--- |
-| **[`rost`](crates/rost)** (`utilrs-rost`) | `rost` | Zero-copy document parser, indexer, and malleable patching engine for `.rost` declarative stylesheets and config files. | `memchr` |
-| **[`errors`](crates/errors)** (`utilrs-errors`) | `errors` | Lightweight, standardized error message wrappers and structured kind/code types. | `std` only |
-| **`all`** | `all` | Convenience meta-feature that enables all available submodules simultaneously. | Workspace deps |
+| Module / Crate                                                    | Feature  | Description                                                                                                             | Dependencies   |
+| :---------------------------------------------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------- | :------------- |
+| **[`rost`](https://github.com/rost-rs/rost.git)** (`utilrs-rost`) | `rost`   | Zero-copy document parser, indexer, and malleable patching engine for `.rost` declarative stylesheets and config files. | `memchr`       |
+| **[`errors`](crates/errors)** (`utilrs-errors`)                   | `errors` | Lightweight, standardized error message wrappers and structured kind/code types.                                        | `std` only     |
+| **`all`**                                                         | `all`    | Convenience meta-feature that enables all available submodules simultaneously.                                          | Workspace deps |
 
 ---
 
@@ -64,7 +64,7 @@ The `.rost` engine is designed to parse, index, and mutate declarative styling a
 - **Malleable Engine:** Supports both zero-allocation querying and in-place document patching for UI live-reloading and game engine state tuning.
 - **Tooling Ecosystem:** Natively paired with [`tree-sitter-rost`](https://github.com/rost-rs/tree-sitter-rost) and [`rost-lsp`](https://github.com/rost-rs/rost-lsp) for IDE diagnostics, autocompletion, and syntax highlighting.
 
-#### Example:
+#### Example
 
 ```rust
 use utilrs::rost::{RostBuilder, Template};
@@ -91,7 +91,7 @@ Provides a clean, uniform abstraction over standard I/O error kinds and numeric 
 - Consistent error structures (`ErrMsg`, `ErrKind`) across workspace boundaries.
 - Zero external dependencies (`std` only).
 
-#### Example:
+#### Example
 
 ```rust
 use std::io::ErrorKind;
