@@ -18,7 +18,7 @@ version.workspace = true
 edition.workspace = true
 
 [dependencies]
-rost = { package = "utilrs-rost", path = "crates/rost", version = "0.1.0", optional = true }
+rost = { package = "rost", path = "crates/rost", version = "0.1.0", optional = true }
 errors = { package = "utilrs-errors", path = "crates/errors", version = "0.1.0", optional = true }
 
 [features]

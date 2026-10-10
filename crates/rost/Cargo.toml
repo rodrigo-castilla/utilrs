@@ -1,8 +1,0 @@
-[package]
-name = "utilrs-rost"
-version.workspace = true
-edition.workspace = true
-description = "Fast zero-copy document parser, indexer, and malleable engine for the .rost format"
-
-[dependencies]
-memchr = { workspace = true }
