@@ -10,7 +10,7 @@ A high-performance, modular meta-crate and utility toolkit for modern Rust devel
 
 - **Modular Cargo Workspace:** Each submodule lives in its own crate under `crates/`, with isolated dependencies and standalone publication capability.
 - **Pay Only for What You Use:** The root `utilrs` crate has zero default dependencies. Enabling a feature like `rost` only pulls the specific dependencies required by that crate (`memchr`), keeping build times minimal.
-- **Unified & Ergonomic Facade:** Submodules are cleanly re-exported at the root (`utilrs::rost`, `utilrs::errors`) while allowing downstream users to depend directly on individual standalone crates (`utilrs-rost`, `utilrs-errors`) if preferred.
+- **Unified & Ergonomic Facade:** Submodules are cleanly re-exported at the root (`utilrs::rost`, `utilrs::errors`) while allowing downstream users to depend directly on individual standalone crates (`rost`, `utilrs-errors`) if preferred.
 - **Predictable & Robust:** Built with strict zero-cost abstractions, zero-copy memory patterns where appropriate, and comprehensive automated test suites.
 
 ---
@@ -19,7 +19,7 @@ A high-performance, modular meta-crate and utility toolkit for modern Rust devel
 
 | Module / Crate                                                    | Feature  | Description                                                                                                             | Dependencies   |
 | :---------------------------------------------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------- | :------------- |
-| **[`rost`](https://github.com/rost-rs/rost.git)** (`utilrs-rost`) | `rost`   | Zero-copy document parser, indexer, and malleable patching engine for `.rost` declarative stylesheets and config files. | `memchr`       |
+| **[`rost`](https://github.com/rost-rs/rost.git)**                 | `rost`   | Zero-copy document parser, indexer, and malleable patching engine for `.rost` declarative stylesheets and config files. | `memchr`       |
 | **[`errors`](crates/errors)** (`utilrs-errors`)                   | `errors` | Lightweight, standardized error message wrappers and structured kind/code types.                                        | `std` only     |
 | **`all`**                                                         | `all`    | Convenience meta-feature that enables all available submodules simultaneously.                                          | Workspace deps |
 
@@ -34,21 +34,31 @@ Add `utilrs` with only the submodules you require in your `Cargo.toml`:
 ```toml
 [dependencies]
 # Pull only the rost declarative engine:
-utilrs = { version = "0.1.0", features = ["rost"] }
+utilrs = { git = "https://github.com/rodrigo-castilla/utilrs.git", features = ["rost"] }
 
 # Or pull multiple specific submodules:
-# utilrs = { version = "0.1.0", features = ["rost", "errors"] }
+# utilrs = { git = "https://github.com/rodrigo-castilla/utilrs.git", features = ["rost", "errors"] }
 
 # Or enable the entire toolkit:
-# utilrs = { version = "0.1.0", features = ["all"] }
+# utilrs = { git = "https://github.com/rodrigo-castilla/utilrs.git", features = ["all"] }
+
+# Pin to a specific release tag or branch (optional):
+# utilrs = { git = "https://github.com/rodrigo-castilla/utilrs.git", tag = "v0.1.0", features = ["rost"] }
 ```
 
 Alternatively, if you prefer standalone crate imports without the meta-crate facade:
 
 ```toml
 [dependencies]
-utilrs-rost = "0.1.0"
-utilrs-errors = "0.1.0"
+# Standalone rost engine (official repository):
+rost = { git = "https://github.com/rost-rs/rost.git" }
+# Pin to a release tag (optional):
+# rost = { git = "https://github.com/rost-rs/rost.git", tag = "v0.1.0" }
+
+# Standalone errors module (sub-crate from utilrs workspace):
+utilrs-errors = { git = "https://github.com/rodrigo-castilla/utilrs.git", package = "utilrs-errors" }
+# Pin to a release tag (optional):
+# utilrs-errors = { git = "https://github.com/rodrigo-castilla/utilrs.git", package = "utilrs-errors", tag = "v0.1.0" }
 ```
 
 ---
@@ -111,7 +121,7 @@ utilrs/
 ├── src/
 │   └── lib.rs            # Feature-gated re-exports and API facade
 ├── crates/
-│   ├── rost/             # utilrs-rost crate (core parser & engine)
+│   ├── rost/             # Submodule: rost core parser & engine (rost-rs/rost)
 │   │   ├── assets/       # Official logo vector & graphics
 │   │   ├── src/          # SIMD parser, query engine, malleable builder
 │   │   └── tests/        # Benchmark & specification tests
