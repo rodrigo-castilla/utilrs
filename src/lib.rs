@@ -9,7 +9,7 @@
 //!
 //! - `rost`: Ultra-fast zero-copy `.rost` document parser, indexer, and malleable engine.
 //!   - Feature: `rost`
-//!   - Standalone crate: `utilrs-rost`
+//!   - Standalone crate: `rost` (<https://github.com/rost-rs/rost>)
 //!   - Dependencies: `memchr`
 //!
 //! - `errors`: Lightweight standardized error message and kind structures.
@@ -25,7 +25,7 @@
 //! ```toml
 //! [dependencies]
 //! # Pull only the rost submodule and its dependencies (e.g., memchr):
-//! utilrs = { version = "0.1.0", features = ["rost"] }
+//! utilrs = { git = "https://github.com/rodrigo-castilla/utilrs.git", features = ["rost"] }
 //! ```
 //!
 //! In Rust code:
