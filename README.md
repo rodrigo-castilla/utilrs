@@ -62,7 +62,7 @@ The `.rost` engine is designed to parse, index, and mutate declarative styling a
 - **Near-Instant Parsing:** Sustains ~500 MB/s throughput (~70,000 tokens in ~1.3 ms) using SIMD token scanning.
 - **Zero-Copy Layout:** Token slices point directly into raw memory arenas without intermediate heap allocations.
 - **Malleable Engine:** Supports both zero-allocation querying and in-place document patching for UI live-reloading and game engine state tuning.
-- **Tooling Ecosystem:** Natively paired with [tree-sitter-rost](../tree-sitter-rost) and [rost-lsp](../rost-lsp) for IDE diagnostics, autocompletion, and syntax highlighting.
+- **Tooling Ecosystem:** Natively paired with [`tree-sitter-rost`](https://github.com/rost-rs/tree-sitter-rost) and [`rost-lsp`](https://github.com/rost-rs/rost-lsp) for IDE diagnostics, autocompletion, and syntax highlighting.
 
 #### Example:
 
